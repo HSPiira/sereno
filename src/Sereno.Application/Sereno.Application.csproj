@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\Sereno.Domain\Sereno.Domain.csproj" />
+    <ProjectReference Include="..\Sereno.Core\Sereno.Core.csproj"/>
   </ItemGroup>
 
   <ItemGroup>
