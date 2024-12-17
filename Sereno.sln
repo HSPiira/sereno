@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D4E1177E-714B-4400-8E8A-A92C3089EDB8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sereno.Domain", "src\Sereno.Domain\Sereno.Domain.csproj", "{8C1B1180-28CD-4649-A0DB-A360103B2621}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sereno.Core", "src\Sereno.Core\Sereno.Core.csproj", "{8C1B1180-28CD-4649-A0DB-A360103B2621}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sereno.Application", "src\Sereno.Application\Sereno.Application.csproj", "{14357F5A-9787-4F0E-88FD-BD78AE33D75C}"
 EndProject
