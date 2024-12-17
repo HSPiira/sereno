@@ -1,7 +1,7 @@
 using Sereno.Core.Common;
-using Sereno.Core.Domains.Booking.ValueObjects;
+using Sereno.Core.Domains.Bookings.ValueObjects;
 
-namespace Sereno.Core.Domains.Booking.Entities;
+namespace Sereno.Core.Domains.Bookings.Entities;
 
 public class Booking : BaseEntity
 {

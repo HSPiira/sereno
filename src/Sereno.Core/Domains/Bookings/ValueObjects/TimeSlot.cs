@@ -1,4 +1,4 @@
-namespace Sereno.Core.Domains.Booking.ValueObjects;
+namespace Sereno.Core.Domains.Bookings.ValueObjects;
 
 public class TimeSlot
 {
