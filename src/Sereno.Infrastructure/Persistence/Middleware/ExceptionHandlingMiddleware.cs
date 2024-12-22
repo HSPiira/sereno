@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+using Sereno.Infrastructure.Persistence.Middleware.DbExceptionMapper;
 
 namespace Sereno.Infrastructure.Persistence.Middleware;
 

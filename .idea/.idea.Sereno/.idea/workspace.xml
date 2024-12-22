@@ -9,22 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1bfc125a-3e1d-4597-9630-aa4432481dff" name="Changes" comment="Add Inventory domain entities and integrate with EF Core&#10;&#10;Implemented `Drink`, `DrinkInventoryMapping`, `InventoryItemBatch`, `AppSetting`, and `Money` entities within the Inventory domain. Updated `AppDbContext` to include new entities and related configurations, ensuring proper integration with EF Core. Enhanced database schema and migration capabilities to support the newly introduced domain concepts.">
-      <change afterPath="$PROJECT_DIR$/src/Sereno.Application/Services/Inventory/Interfaces/IDrinkService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sereno.Infrastructure/Persistence/Middleware/ApplicationExceptionMapper.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sereno.Infrastructure/Persistence/Middleware/CompositeExceptionMapper.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sereno.Infrastructure/Persistence/Middleware/DbExceptionMapper/PostgresExceptionMapper.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sereno.Infrastructure/Persistence/Middleware/DbExceptionMapper/SqlServerExceptionMapper.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sereno.Infrastructure/Persistence/Middleware/DbExceptionMapper/SqliteExceptionMapper.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sereno.Infrastructure/Persistence/Middleware/IExceptionMapper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="1bfc125a-3e1d-4597-9630-aa4432481dff" name="Changes" comment="Add database-specific exception mappers and middleware enhancements&#10;&#10;Introduced exception mappers for SQLite, PostgreSQL, SQL Server, and application-level exceptions, integrated with a composite mapper for better extensibility. Updated `ExceptionHandlingMiddleware` to utilize the mappers and improved logging and response handling for database-specific errors. Registered new services in dependency injection and updated project dependencies for required packages.">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Sereno/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Sereno/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sereno.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Sereno.sln.DotSettings.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Sereno.API/Sereno.db-shm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sereno.API/Sereno.db-shm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Sereno.API/Sereno.db-wal" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sereno.API/Sereno.db-wal" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Sereno.Infrastructure/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sereno.Infrastructure/DependencyInjection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Sereno.Infrastructure/Persistence/Middleware/ExceptionHandlingMiddleware.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sereno.Infrastructure/Persistence/Middleware/ExceptionHandlingMiddleware.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Sereno.Infrastructure/Sereno.Infrastructure.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sereno.Infrastructure/Sereno.Infrastructure.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +25,8 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
@@ -227,7 +216,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1734729897964</updated>
-      <workItem from="1734729899053" duration="47735000" />
+      <workItem from="1734729899053" duration="48875000" />
     </task>
     <task id="LOCAL-00001" summary="Add supplier management functionality with CRUD operations&#10;&#10;Implemented a complete supplier management system, including repository, service, and controller layers, with CRUD functionality. Introduced `Supplier` and related entities, configured EF Core with SQLite, and added exception handling middleware to handle database-specific errors. Dependency injection setup was updated to register necessary services and repositories.">
       <option name="closed" value="true" />
@@ -261,7 +250,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734870938114</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Add database-specific exception mappers and middleware enhancements&#10;&#10;Introduced exception mappers for SQLite, PostgreSQL, SQL Server, and application-level exceptions, integrated with a composite mapper for better extensibility. Updated `ExceptionHandlingMiddleware` to utilize the mappers and improved logging and response handling for database-specific errors. Registered new services in dependency injection and updated project dependencies for required packages.">
+      <option name="closed" value="true" />
+      <created>1734902778547</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1734902778547</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -275,7 +272,8 @@
     <MESSAGE value="Add SQLite database files and update project configuration&#10;&#10;Introduced SQLite database files for the Sereno API project. Added a `.gitignore` file to exclude unnecessary directories and files from version control. Updated project settings to include IntelliJ IDEA metadata for database integration." />
     <MESSAGE value="Make AppDbContext sealed  &#10;&#10;Marking `AppDbContext` as sealed prevents it from being inherited. This enforces better design principles and ensures that the class's behavior cannot be altered through subclassing." />
     <MESSAGE value="Add Inventory domain entities and integrate with EF Core&#10;&#10;Implemented `Drink`, `DrinkInventoryMapping`, `InventoryItemBatch`, `AppSetting`, and `Money` entities within the Inventory domain. Updated `AppDbContext` to include new entities and related configurations, ensuring proper integration with EF Core. Enhanced database schema and migration capabilities to support the newly introduced domain concepts." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Inventory domain entities and integrate with EF Core&#10;&#10;Implemented `Drink`, `DrinkInventoryMapping`, `InventoryItemBatch`, `AppSetting`, and `Money` entities within the Inventory domain. Updated `AppDbContext` to include new entities and related configurations, ensuring proper integration with EF Core. Enhanced database schema and migration capabilities to support the newly introduced domain concepts." />
+    <MESSAGE value="Add database-specific exception mappers and middleware enhancements&#10;&#10;Introduced exception mappers for SQLite, PostgreSQL, SQL Server, and application-level exceptions, integrated with a composite mapper for better extensibility. Updated `ExceptionHandlingMiddleware` to utilize the mappers and improved logging and response handling for database-specific errors. Registered new services in dependency injection and updated project dependencies for required packages." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add database-specific exception mappers and middleware enhancements&#10;&#10;Introduced exception mappers for SQLite, PostgreSQL, SQL Server, and application-level exceptions, integrated with a composite mapper for better extensibility. Updated `ExceptionHandlingMiddleware` to utilize the mappers and improved logging and response handling for database-specific errors. Registered new services in dependency injection and updated project dependencies for required packages." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -292,19 +290,6 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/src/Sereno.API/Controllers/Inventory/SupplierController.cs</url>
-          <line>27</line>
-          <properties documentPath="$PROJECT_DIR$/src/Sereno.API/Controllers/Inventory/SupplierController.cs" containingFunctionPresentation="Method 'AddSupplier'">
-            <startOffsets>
-              <option value="826" />
-            </startOffsets>
-            <endOffsets>
-              <option value="850" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/src/Sereno.API/Controllers/Inventory/InventoryController.cs</url>

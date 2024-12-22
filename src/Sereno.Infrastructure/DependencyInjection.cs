@@ -16,30 +16,55 @@ public static class DependencyInjection
 {
     public static void AddPersistence(this IServiceCollection services, IConfiguration configuration)
     {
-        // Register AppDbContext with default Scoped lifetime
+        services.AddDbContext(configuration);
+        services.RegisterRepositories();
+        services.RegisterServices();
+        services.RegisterExceptionMappers();
+        services.RegisterCompositeExceptionMapper();
+    }
+
+    #region DbContext
+    private static void AddDbContext(this IServiceCollection services, IConfiguration configuration)
+    {
         services.AddDbContext<AppDbContext>(options =>
             options.UseSqlite(
                 configuration.GetConnectionString("DefaultConnection"),
                 b => b.MigrationsAssembly(typeof(AppDbContext).Assembly.FullName)
             )
         );
+    }
+    #endregion
 
-        // Register repositories
+    #region Register Repositories
+    private static void RegisterRepositories(this IServiceCollection services)
+    {
         services.AddScoped<IGenericRepository<Supplier, Guid>, InMemoryRepository<Supplier, Guid>>();
         services.AddScoped<IGenericRepository<InventoryItem, Guid>, InMemoryRepository<InventoryItem, Guid>>();
+    }
+    #endregion
 
-        // Register services
+    #region Register Services
+    private static void RegisterServices(this IServiceCollection services)
+    {
         services.AddScoped<ISupplierService, SupplierService>();
         services.AddScoped<IInventoryService, InventoryService>();
+    }
+    #endregion
 
-        // Register exception mappers
+    #region Register Exception Mappers
+    private static void RegisterExceptionMappers(this IServiceCollection services)
+    {
         services.AddSingleton<SqliteExceptionMapper>();
         services.AddSingleton<PostgresExceptionMapper>();
         services.AddSingleton<SqlServerExceptionMapper>();
         services.AddSingleton<ApplicationExceptionMapper>();
+    }
+    #endregion
 
-        // Register composite exception mapper
-        services.AddSingleton<IExceptionMapper>(sp => 
+    #region Composite Exception Mapper
+    private static void RegisterCompositeExceptionMapper(this IServiceCollection services)
+    {
+        services.AddSingleton<IExceptionMapper>(sp =>
             new CompositeExceptionMapper(new List<IExceptionMapper>
             {
                 sp.GetRequiredService<SqliteExceptionMapper>(),
@@ -49,4 +74,5 @@ public static class DependencyInjection
             })
         );
     }
+    #endregion
 }

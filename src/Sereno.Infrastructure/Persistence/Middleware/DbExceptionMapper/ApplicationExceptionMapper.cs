@@ -1,6 +1,6 @@
 using Microsoft.Extensions.Logging;
 
-namespace Sereno.Infrastructure.Persistence.Middleware;
+namespace Sereno.Infrastructure.Persistence.Middleware.DbExceptionMapper;
 
 public class ApplicationExceptionMapper : IExceptionMapper
 {

@@ -1,4 +1,4 @@
-namespace Sereno.Infrastructure.Persistence.Middleware;
+namespace Sereno.Infrastructure.Persistence.Middleware.DbExceptionMapper;
 
 public class CompositeExceptionMapper : IExceptionMapper
 {
