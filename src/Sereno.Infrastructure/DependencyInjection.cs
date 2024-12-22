@@ -1,18 +1,18 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SereniLux.Application.Services.Inventory.Implementations;
-using SereniLux.Application.Services.Inventory.Interfaces;
-using SereniLux.Core.Domains.Inventory.Interfaces;
-using SereniLux.Infrastructure.Persistence;
-using SereniLux.Infrastructure.Repositories.Inventory;
+using Sereno.Application.IRepository;
+using Sereno.Application.IService;
+using Sereno.Application.Service;
+using Sereno.Core;
+using Sereno.Infrastructure.Persistence;
+using Sereno.Infrastructure.Repository;
 
-namespace SereniLux.Infrastructure;
+namespace Sereno.Infrastructure;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddPersistence(
-        this IServiceCollection services,
+    public static void AddPersistence(this IServiceCollection services,
         IConfiguration configuration)
     {
         services.AddDbContext<AppDbContext>(options =>
@@ -20,12 +20,8 @@ public static class DependencyInjection
                 b => b.MigrationsAssembly(
                     typeof(AppDbContext).Assembly.FullName)), 
             ServiceLifetime.Transient);
-
-        services.AddScoped<AppDbContext>();
-        services.AddScoped<IInventoryItemRepository, InventoryItemRepository>();
-        services.AddScoped<ISupplierRepository, SupplierRepository>();
-        services.AddScoped<IInventoryService, InventoryService>();
-        services.AddScoped<SupplierService>();
-        return services;
+        
+        services.AddScoped<IGenericRepository<Supplier, Guid>, InMemoryRepository<Supplier, Guid>>();
+        services.AddScoped<ISupplierService, SupplierService>();
     }
 }
