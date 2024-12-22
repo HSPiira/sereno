@@ -9,27 +9,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1bfc125a-3e1d-4597-9630-aa4432481dff" name="Changes" comment="Add supplier management functionality with CRUD operations&#10;&#10;Implemented a complete supplier management system, including repository, service, and controller layers, with CRUD functionality. Introduced `Supplier` and related entities, configured EF Core with SQLite, and added exception handling middleware to handle database-specific errors. Dependency injection setup was updated to register necessary services and repositories.">
-      <change afterPath="$PROJECT_DIR$/src/Sereno.API/Controllers/Inventory/InventoryController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sereno.Application/Services/Inventory/Implementations/InventoryService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sereno.Application/Services/Inventory/Interfaces/IInventoryService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sereno.Core/Domains/Inventory/Entities/InventoryItem.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sereno.Core/Domains/Inventory/ValueObjects/ItemCategory.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sereno.Core/Domains/Inventory/ValueObjects/StockLevel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sereno.Infrastructure/Dtos/Inventory/InventoryItemDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sereno.Infrastructure/Dtos/Records/ConcreteStockLevel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sereno.Infrastructure/Persistence/Mapper/MappingProfile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Sereno.API/Controllers/SupplierController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sereno.API/Controllers/Inventory/SupplierController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Sereno.API/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sereno.API/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Sereno.Application/IRepository/IGenericRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sereno.Application/Shared/IGenericRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Sereno.Application/IService/ISupplierService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sereno.Application/Services/Inventory/Interfaces/ISupplierService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Sereno.Application/Service/SupplierService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sereno.Application/Services/Inventory/Implementations/SupplierService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Sereno.Core/Supplier.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sereno.Core/Domains/Inventory/Entities/Supplier.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Sereno.Infrastructure/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sereno.Infrastructure/DependencyInjection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Sereno.Infrastructure/Dtos/SupplierDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sereno.Infrastructure/Dtos/Inventory/SupplierDto.cs" afterDir="false" />
+    <list default="true" id="1bfc125a-3e1d-4597-9630-aa4432481dff" name="Changes" comment="Make AppDbContext sealed  &#10;&#10;Marking `AppDbContext` as sealed prevents it from being inherited. This enforces better design principles and ensures that the class's behavior cannot be altered through subclassing.">
+      <change afterPath="$PROJECT_DIR$/src/Sereno.Application/Shared/IAppDbContext.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Sereno.Core/Common/AppSetting.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Sereno.Core/Domains/Inventory/Entities/Drink.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Sereno.Core/Domains/Inventory/Entities/DrinkInventoryMapping.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Sereno.Core/Domains/Inventory/Entities/InventoryItemBatch.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Sereno.Core/Domains/Inventory/ValueObjects/Money.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Sereno/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Sereno/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sereno.Application/Sereno.Application.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sereno.Application/Sereno.Application.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sereno.Infrastructure/Migrations/AppDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sereno.Infrastructure/Migrations/AppDbContextModelSnapshot.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Sereno.Infrastructure/Persistence/AppDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sereno.Infrastructure/Persistence/AppDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Sereno.Infrastructure/Repository/InMemoryRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sereno.Infrastructure/Repository/InMemoryRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Sereno.Infrastructure/Sereno.Infrastructure.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sereno.Infrastructure/Sereno.Infrastructure.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,6 +91,10 @@
     <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/piira/Developer/Coding/C Sharp/self/sereno/src/Sereno.Infrastructure/Persistence/AppDbContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../sereno_old/src/Sereno.Core/Domains/Inventory/Entities/InventoryItem.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../sereno_old/src/Sereno.Core/Domains/Inventory/ValueObjects/ItemCategory.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../sereno_old/src/Sereno.Core/Domains/Inventory/ValueObjects/StockLevel.cs" root0="SKIP_HIGHLIGHTING" />
@@ -139,7 +133,7 @@
     ".NET Launch Settings Profile.Sereno.API: https.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "inventory__domain",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -212,7 +206,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1734729897964</updated>
-      <workItem from="1734729899053" duration="41129000" />
+      <workItem from="1734729899053" duration="42782000" />
     </task>
     <task id="LOCAL-00001" summary="Add supplier management functionality with CRUD operations&#10;&#10;Implemented a complete supplier management system, including repository, service, and controller layers, with CRUD functionality. Introduced `Supplier` and related entities, configured EF Core with SQLite, and added exception handling middleware to handle database-specific errors. Dependency injection setup was updated to register necessary services and repositories.">
       <option name="closed" value="true" />
@@ -222,7 +216,23 @@
       <option name="project" value="LOCAL" />
       <updated>1734856125797</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Add SQLite database files and update project configuration&#10;&#10;Introduced SQLite database files for the Sereno API project. Added a `.gitignore` file to exclude unnecessary directories and files from version control. Updated project settings to include IntelliJ IDEA metadata for database integration.">
+      <option name="closed" value="true" />
+      <created>1734869310894</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1734869310894</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Make AppDbContext sealed  &#10;&#10;Marking `AppDbContext` as sealed prevents it from being inherited. This enforces better design principles and ensures that the class's behavior cannot be altered through subclassing.">
+      <option name="closed" value="true" />
+      <created>1734869435418</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1734869435418</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -233,7 +243,9 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Add supplier management functionality with CRUD operations&#10;&#10;Implemented a complete supplier management system, including repository, service, and controller layers, with CRUD functionality. Introduced `Supplier` and related entities, configured EF Core with SQLite, and added exception handling middleware to handle database-specific errors. Dependency injection setup was updated to register necessary services and repositories." />
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="Add SQLite database files and update project configuration&#10;&#10;Introduced SQLite database files for the Sereno API project. Added a `.gitignore` file to exclude unnecessary directories and files from version control. Updated project settings to include IntelliJ IDEA metadata for database integration." />
+    <MESSAGE value="Make AppDbContext sealed  &#10;&#10;Marking `AppDbContext` as sealed prevents it from being inherited. This enforces better design principles and ensures that the class's behavior cannot be altered through subclassing." />
+    <option name="LAST_COMMIT_MESSAGE" value="Make AppDbContext sealed  &#10;&#10;Marking `AppDbContext` as sealed prevents it from being inherited. This enforces better design principles and ensures that the class's behavior cannot be altered through subclassing." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

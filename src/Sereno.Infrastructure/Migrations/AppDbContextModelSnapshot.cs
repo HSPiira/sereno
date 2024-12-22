@@ -17,6 +17,76 @@ namespace Sereno.Infrastructure.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.0");
 
+            modelBuilder.Entity("Sereno.Core.Common.AppSetting", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("ReferenceKey")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Value")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AppSettings");
+                });
+
+            modelBuilder.Entity("Sereno.Core.Domains.Inventory.Entities.Drink", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("StockQuantity")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Name", "Category")
+                        .IsUnique();
+
+                    b.ToTable("Drinks");
+                });
+
             modelBuilder.Entity("Sereno.Core.Domains.Inventory.Entities.InventoryItem", b =>
                 {
                     b.Property<Guid>("Id")
@@ -43,6 +113,9 @@ namespace Sereno.Infrastructure.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Name", "Category")
+                        .IsUnique();
 
                     b.ToTable("InventoryItems");
                 });
@@ -77,6 +150,33 @@ namespace Sereno.Infrastructure.Migrations
                         .HasFilter("[IsDeleted] = 0");
 
                     b.ToTable("Suppliers");
+                });
+
+            modelBuilder.Entity("Sereno.Core.Domains.Inventory.Entities.Drink", b =>
+                {
+                    b.OwnsOne("Sereno.Core.Domains.Inventory.ValueObjects.Money", "Price", b1 =>
+                        {
+                            b1.Property<Guid>("DrinkId")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<decimal>("Amount")
+                                .HasColumnType("TEXT")
+                                .HasColumnName("Price");
+
+                            b1.Property<string>("Currency")
+                                .IsRequired()
+                                .HasColumnType("TEXT");
+
+                            b1.HasKey("DrinkId");
+
+                            b1.ToTable("Drinks");
+
+                            b1.WithOwner()
+                                .HasForeignKey("DrinkId");
+                        });
+
+                    b.Navigation("Price")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Sereno.Core.Domains.Inventory.Entities.InventoryItem", b =>
