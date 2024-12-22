@@ -1,6 +1,6 @@
 using Sereno.Core.Common;
 
-namespace Sereno.Core;
+namespace Sereno.Core.Domains.Inventory;
 
 public class Supplier : BaseEntity
 {

@@ -1,4 +1,6 @@
 using Sereno.Core;
+using Sereno.Core.Domains.Inventory;
+using Sereno.Core.Domains.Inventory.Entities;
 
 namespace Sereno.Application.IService;
 

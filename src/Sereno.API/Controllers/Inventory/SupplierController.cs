@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using Sereno.Application.IService;
+using Sereno.Application.Services.Inventory.Interfaces;
 using Sereno.Core;
+using Sereno.Core.Domains.Inventory;
+using Sereno.Core.Domains.Inventory.Entities;
 using Sereno.Infrastructure.Dtos;
 
 namespace Sereno.API.Controllers;
