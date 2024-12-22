@@ -1,6 +1,4 @@
 using AutoMapper;
-using Sereno.Infrastructure.Dtos.Inventory;
-using Sereno.Infrastructure.Migrations;
 
 namespace Sereno.Infrastructure.Persistence.Mapper;
 
