@@ -1,4 +1,4 @@
-namespace Sereno.Application.IRepository;
+namespace Sereno.Application.Shared;
 
 public interface IGenericRepository<T, in TKey> where T : class
 { 

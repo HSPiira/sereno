@@ -1,17 +1,35 @@
 using Microsoft.EntityFrameworkCore;
-using Sereno.Core;
+using Sereno.Application.Shared;
 using Sereno.Core.Common;
+using Sereno.Core.Domains.Inventory.Entities;
 
 namespace Sereno.Infrastructure.Persistence;
 
-public class AppDbContext : DbContext
+public sealed class AppDbContext : DbContext, IAppDbContext
 {
+    #region Ctor
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {
         Suppliers = Set<Supplier>();
+        Drinks = Set<Drink>();
+        AppSettings = Set<AppSetting>();
+        InventoryItems = Set<InventoryItem>();
     }
+    #endregion
 
+    #region DbSet
+    public DbSet<Drink> Drinks { get; set; }
     public DbSet<Supplier> Suppliers { get; set; }
+    public DbSet<AppSetting> AppSettings { get; set; }
+    public DbSet<InventoryItem> InventoryItems { get; set; }
+    #endregion
+    
+    #region Methods
+    public Task<int> SaveChangesAsync()
+    {
+        return base.SaveChangesAsync();
+    }
+    #endregion
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -35,6 +53,26 @@ public class AppDbContext : DbContext
             .HasIndex(s => new { s.Name, s.Address })
             .IsUnique()
             .HasFilter("[IsDeleted] = 0");
+        
+        modelBuilder.Entity<InventoryItem>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.HasIndex(i => new {i.Name, i.Category}).IsUnique();
+            entity.OwnsOne(e => e.StockLevel, stockLevel =>
+            {
+                stockLevel.Property(sl => sl.Amount).HasColumnName("StockLevel");
+            });
+        });
+        
+        modelBuilder.Entity<Drink>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.HasIndex(i => new {i.Name, i.Category}).IsUnique();
+            entity.OwnsOne(e => e.Price, money =>
+            {
+                money.Property(m => m.Amount).HasColumnName("Price");
+            });
+        });
 
         base.OnModelCreating(modelBuilder);
     }

@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using Sereno.Application.IRepository;
+using Sereno.Application.Shared;
 using Sereno.Core.Common;
 using Sereno.Infrastructure.Persistence;
 

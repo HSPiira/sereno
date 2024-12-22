@@ -1,4 +1,4 @@
-namespace Sereno.Infrastructure.Dtos;
+namespace Sereno.Infrastructure.Dtos.Inventory;
 
 public class SupplierDto
 {
