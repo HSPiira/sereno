@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 using Sereno.Infrastructure;
@@ -6,7 +7,13 @@ using Sereno.Infrastructure.Persistence.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());  // For System.Text.Json
+        // Or if using Newtonsoft.Json, uncomment the line below:
+        // options.SerializerSettings.Converters.Add(new StringEnumConverter());
+    });
 builder.Services.AddOpenApi();
 
 builder.Services.AddPersistence(builder.Configuration);

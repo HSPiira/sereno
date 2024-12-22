@@ -1,11 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Sereno.Application.Services.Inventory.Interfaces;
-using Sereno.Core;
-using Sereno.Core.Domains.Inventory;
 using Sereno.Core.Domains.Inventory.Entities;
 using Sereno.Infrastructure.Dtos;
+using Sereno.Infrastructure.Dtos.Inventory;
 
-namespace Sereno.API.Controllers;
+namespace Sereno.API.Controllers.Inventory;
 
 [Route("api/[controller]")]
 [ApiController]

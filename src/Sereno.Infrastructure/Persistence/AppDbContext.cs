@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Sereno.Core;
 using Sereno.Core.Common;
+using Sereno.Core.Domains.Inventory;
+using Sereno.Core.Domains.Inventory.Entities;
 
 namespace Sereno.Infrastructure.Persistence;
 
@@ -12,6 +14,7 @@ public class AppDbContext : DbContext
     }
 
     public DbSet<Supplier> Suppliers { get; set; }
+    public DbSet<InventoryItem> InventoryItems { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -35,6 +38,16 @@ public class AppDbContext : DbContext
             .HasIndex(s => new { s.Name, s.Address })
             .IsUnique()
             .HasFilter("[IsDeleted] = 0");
+        
+        modelBuilder.Entity<InventoryItem>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.HasIndex(i => new {i.Name, i.Category}).IsUnique();
+            entity.OwnsOne(e => e.StockLevel, stockLevel =>
+            {
+                stockLevel.Property(sl => sl.Amount).HasColumnName("StockLevel");
+            });
+        });
 
         base.OnModelCreating(modelBuilder);
     }

@@ -1,8 +1,6 @@
-using Sereno.Core;
-using Sereno.Core.Domains.Inventory;
 using Sereno.Core.Domains.Inventory.Entities;
 
-namespace Sereno.Application.IService;
+namespace Sereno.Application.Services.Inventory.Interfaces;
 
 public interface ISupplierService
 {

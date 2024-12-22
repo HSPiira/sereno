@@ -1,6 +1,8 @@
 namespace Sereno.Core.Domains.Inventory.ValueObjects;
 
-public class ItemCategory
+public enum ItemCategory
 {
-    
+    Beverages,
+    Snacks,
+    Miscellaneous
 }

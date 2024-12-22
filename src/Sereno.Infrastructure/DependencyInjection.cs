@@ -1,10 +1,14 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Sereno.Application.IRepository;
-using Sereno.Application.IService;
-using Sereno.Application.Service;
+using Sereno.Application.Services;
+using Sereno.Application.Services.Inventory;
+using Sereno.Application.Services.Inventory.Implementations;
+using Sereno.Application.Services.Inventory.Interfaces;
+using Sereno.Application.Shared;
 using Sereno.Core;
+using Sereno.Core.Domains.Inventory;
+using Sereno.Core.Domains.Inventory.Entities;
 using Sereno.Infrastructure.Persistence;
 using Sereno.Infrastructure.Repository;
 
@@ -23,5 +27,7 @@ public static class DependencyInjection
         
         services.AddScoped<IGenericRepository<Supplier, Guid>, InMemoryRepository<Supplier, Guid>>();
         services.AddScoped<ISupplierService, SupplierService>();
+        services.AddScoped<IGenericRepository<InventoryItem, Guid>, InMemoryRepository<InventoryItem, Guid>>();
+        services.AddScoped<IInventoryService, InventoryService>();
     }
 }

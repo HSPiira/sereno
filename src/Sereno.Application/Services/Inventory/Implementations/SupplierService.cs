@@ -1,8 +1,8 @@
-using Sereno.Application.IService;
+using Sereno.Application.Services.Inventory.Interfaces;
 using Sereno.Application.Shared;
 using Sereno.Core.Domains.Inventory.Entities;
 
-namespace Sereno.Application.Services.Inventory;
+namespace Sereno.Application.Services.Inventory.Implementations;
 
 public class SupplierService :ISupplierService
 {
