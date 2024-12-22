@@ -1,12 +1,10 @@
 using Microsoft.EntityFrameworkCore;
-using Sereno.Core;
 using Sereno.Core.Common;
-using Sereno.Core.Domains.Inventory;
 using Sereno.Core.Domains.Inventory.Entities;
 
 namespace Sereno.Infrastructure.Persistence;
 
-public class AppDbContext : DbContext
+public sealed class AppDbContext : DbContext
 {
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {
